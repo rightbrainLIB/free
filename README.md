@@ -5,3 +5,7 @@
 npm i pnpm  
 pnpm i  
 pnpm run dev
+
+## 1차 목표
+
+Redux 자유롭게 다루기
