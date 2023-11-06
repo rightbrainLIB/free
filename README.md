@@ -1,4 +1,7 @@
-# free
+# feature/김재성
 
-feature/김재성
-push test.
+## 환경
+
+npm i pnpm  
+pnpm i  
+pnpm run dev
