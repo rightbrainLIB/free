@@ -3,9 +3,9 @@ import { createStore } from "redux";
 
 const 체중 = 100;
 
-interface Action {
+type Action = {
 	type: string;
-}
+};
 
 function reducer(state = 체중, action: Action) {
 	if (action.type === "증가") {

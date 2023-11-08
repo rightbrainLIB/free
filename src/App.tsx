@@ -36,6 +36,8 @@ import Pattern from "./components/pattern/Pattern";
 import Mvc from "./components/pattern/Mvc";
 import Flux from "./components/pattern/Flux";
 import Redux1 from "./components/redux/Redux1";
+import Redux2 from "./components/redux/Redux2";
+import Redux3 from "./components/redux/Redux3";
 
 import { useState, useCallback } from "react";
 import "./App.css";
@@ -122,8 +124,10 @@ function App() {
 			<Mvc></Mvc>
 			<Flux></Flux>
 			<Redux1></Redux1>
-			<hr />
+			<Redux2></Redux2>
+			<Redux3></Redux3>
 
+			<hr />
 			<div>
 				{/* 목록 */}
 				{list.map((item) => (
@@ -165,7 +169,6 @@ function App() {
 					</div>
 				))}
 			</div>
-
 			<Wrap m={"te111st"}></Wrap>
 			{/* 등록 */}
 			<Insert
