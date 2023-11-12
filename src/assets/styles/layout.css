@@ -1,0 +1,29 @@
+/*
+    공통 레이아웃
+*/
+
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+#root{display:flex;flex-direction: column;min-height:100vh;width:100%;}
+.header{flex:none;line-height:50px;background:green;text-align:center;width:100%;color:#fff;}
+.header a{padding:10px;}
+.body{flex:1 auto;}
+.footer{flex:none;line-height:50px;background:red;text-align:center;width:100%;color:#fff;}
+a{color:#fff;}

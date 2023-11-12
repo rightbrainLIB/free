@@ -1,9 +1,10 @@
-import Router from '@components/route/Index';
+import Router from "@components/route/Index"
+import "@/assets/styles/layout.css"
 
 function App() {
-	return (
-		<Router />
-	);
+  return (
+      <Router />
+  )
 }
 
-export default App;
+export default App

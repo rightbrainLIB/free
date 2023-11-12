@@ -1,27 +1,27 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Header from '../layout/Header';
-// import Footer from '../layout/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from '@components/layout/Footer';
+import Header from '@components/layout/Header';
 import NotFound from '@components/error/NotFound';
-import Main from '@components/pages/Main';
-import logo from "@assets/images/logo_kakao.png"
-
-
-
-
+import Main from '@components/page/main/Index';
+import Notice from '@components/page/notice/Index';
+import UseState from "@components/hooks/useState/Index"
 
 function Router() {
-	return (
-        <BrowserRouter>
-            <Header />
+    return (
+    <BrowserRouter>
+        <Header />
+        <div className='body'>
             <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="*" element={<NotFound />} />
+                <Route path="/" element={<Main  />}></Route>
+                <Route path="/hooks/useState" element={<UseState  />}></Route>
+                <Route path="/notice" element={<Notice  />}></Route>
+                <Route path="*" element={<NotFound  />}></Route>
             </Routes>
-            <img src={logo} alt="BigCo Inc. logo"/>
-            <Footer />
-        </BrowserRouter>
-	);
-}
-
-export default Router;
+        </div>
+        <Footer />
+    </BrowserRouter>
+    )
+  }
+  
+  export default Router
+  
