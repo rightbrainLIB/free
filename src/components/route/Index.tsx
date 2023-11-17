@@ -10,6 +10,7 @@ import UseContext from '@components/hooks/useContext/Index';
 import UseMemo from '@components/hooks/useMemo/Index';
 import UseCallback from '@components/hooks/useCallback/Index';
 import UseReducer2 from '@components/hooks/useReducer/Index';
+import ReactMemo from '@components/hooks/reactMemo/Index';
 import TypeScript from '@components/typescript/Index';
 function Router() {
     return (
@@ -27,6 +28,7 @@ function Router() {
                 <Route path="/hooks/useMemo" element={<UseMemo />}></Route>
                 <Route path="/hooks/useCallback" element={<UseCallback />}></Route>
                 <Route path="/hooks/useReducer" element={<UseReducer2 />}></Route>
+                <Route path="/hooks/reactMemo" element={<ReactMemo />}></Route>
                 <Route path="*" element={<NotFound  />}></Route>
             </Routes>
         </div>
