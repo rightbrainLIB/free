@@ -16,6 +16,7 @@ function 커스텀훅(초기값:string, 띄워라:(e:string)=>void){
     }
 
     // 리턴할때 as const하는거 잊지말자!
+    // https://jsdev.kr/t/topic/5613/3
     return [값, 변형할거다, 핸들] as const
 }
 
@@ -26,7 +27,7 @@ function custom() {
 
     return (
         <>
-           <h1>customHook</h1>
+           <h1>customHook : return할때 as const 주의하자</h1>
            <input type="text" value={리턴값} onChange={변형할거다}/>
            <button onClick={핸들}>핸들</button>
            <hr />
