@@ -27,3 +27,12 @@ body {
 .body{flex:1 auto;}
 .footer{flex:none;line-height:50px;background:red;text-align:center;width:100%;color:#fff;}
 a{color:#fff;}
+
+.alarm{position:relative;}
+.alarm::after{content:'';display:block;width:5px;height:5px;border-radius:5px;background-color:red;position:absolute;right:0;top:25%; animation: blink-effect 1s step-end infinite;}
+
+@keyframes blink-effect {
+    50% {
+        opacity: 0;
+    }
+}
