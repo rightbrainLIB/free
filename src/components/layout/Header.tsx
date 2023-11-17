@@ -17,6 +17,7 @@ function Header() {
             <Link to="/hooks/useCallback" onClick={()=>{now?.update(5)}}><span style={{fontWeight : (now?.menu == 5 ? '700' : '400')}}>useCallback</span></Link>
             <Link to="/hooks/useReducer" onClick={()=>{now?.update(6)}}><span style={{fontWeight : (now?.menu == 6 ? '700' : '400')}}>useReducer</span></Link>
             <Link to="/hooks/reactMemo" onClick={()=>{now?.update(7)}}><span style={{fontWeight : (now?.menu == 7 ? '700' : '400')}}>reactMemo</span></Link>
+            <Link to="/hooks/custom" onClick={()=>{now?.update(8)}}><span style={{fontWeight : (now?.menu == 8 ? '700' : '400')}}>customHook</span></Link>
         </div>
     )
   }
