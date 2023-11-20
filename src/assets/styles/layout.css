@@ -22,8 +22,8 @@ body {
 }
 
 #root{display:flex;flex-direction: column;min-height:100vh;width:100%;}
-.header{flex:none;line-height:50px;background:green;text-align:center;width:100%;color:#fff;}
-.header a{padding:10px;}
+.header{flex:none;background:green;text-align:center;width:100%;color:#fff;}
+.header a{padding:10px 5px;display:inline-block;}
 .body{flex:1 auto;}
 .footer{flex:none;line-height:50px;background:red;text-align:center;width:100%;color:#fff;}
 a{color:#fff;}
@@ -35,4 +35,34 @@ a{color:#fff;}
     50% {
         opacity: 0;
     }
+}
+
+.chat-wrap{
+    position:relative;
+    flex:1 auto;
+    display:flex;
+    flex-direction:column;
+    height:70vh;
+    overflow:auto;
+    border:5px dashed yellow;
+}
+.chat-wrap section{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    max-height:100%;
+    overflow-y:auto;
+}
+.chat-wrap div{
+    border:5px solid #333;
+    height:100px;
+    flex:none;
+    /* opacity: 0;
+    max-height: 0; */
+    transition-duration: 1s;
+}
+.chat-wrap div.active{
+    opacity: 1;
+    max-height: 3000px;
 }

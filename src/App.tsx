@@ -5,13 +5,15 @@ import { useState } from "react"
 
 
 function App() {
-  const [now, setNow] = useState(0);
-
+  const [활성화메뉴, 활성화메뉴설정] = useState(0);
+  const [메뉴숨김, 메뉴숨김설정] = useState(false);
 
   return (
       <MenuContext.Provider value={{
-        menu : now, 
-        update : setNow
+        활성화메뉴 : 활성화메뉴, 
+        활성화메뉴설정 : 활성화메뉴설정,
+        메뉴숨김 : 메뉴숨김,
+        메뉴숨김설정: 메뉴숨김설정,
       }}>
         <Router />
       </MenuContext.Provider>
