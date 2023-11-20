@@ -39,27 +39,19 @@ a{color:#fff;}
 
 .chat-wrap{
     position:relative;
-    flex:1 auto;
     display:flex;
-    flex-direction:column;
+    flex-direction:column-reverse;
     height:70vh;
     overflow:auto;
     border:5px dashed yellow;
-}
-.chat-wrap section{
-    position:absolute;
-    left:0;
-    bottom:0;
-    width:100%;
-    max-height:100%;
-    overflow-y:auto;
 }
 .chat-wrap div{
     border:5px solid #333;
     height:100px;
     flex:none;
-    /* opacity: 0;
-    max-height: 0; */
+    overflow:hidden;
+    opacity: 0;
+    max-height: 0;
     transition-duration: 1s;
 }
 .chat-wrap div.active{

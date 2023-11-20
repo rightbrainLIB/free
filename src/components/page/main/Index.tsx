@@ -29,6 +29,9 @@ function Main() {
         }
     ]);
     const 더미메세지추가 = () =>{
+       
+
+
         const 새로운메세지 = {
             아이디 : 메세지카드.length + 1,
             메세지 : Math.random() * 10 + '',
@@ -37,33 +40,40 @@ function Main() {
         };
 
         메세지카드설정(
-            (이전값)=>{return [ ...이전값, 새로운메세지]}
+            (이전값)=>{
+                return [새로운메세지, ...이전값]
+            }
         );
+        setTimeout(() => {
+            if (box.current) box.current.scrollTop = 99999999;
+                
+            메세지카드설정(
+                (이전값)=>{
+                    const 업데이트값 = 이전값.map((아이템, 인덱스)=>{
+                        if(인덱스 === 0){
+                            return {...아이템, 활성화: true};
+                        }else{
+                            return 아이템
+                        }
+                    })
+                    return [...업데이트값]
+                }
+            );
+        }, 1);
+       
 
-        // setstate 콜백을 찾아내자
-        if(box.current){
-            box.current.scrollTop = box.current.scrollHeight;
-        }
+
     }
-    // useEffect(()=>{
-    //     메세지카드설정(
-    //         메세지카드.map(아이템 => {
-    //             return (아이템.활성화) ? 아이템 : {...아이템, 활성화 : true}
-    //         })
-    //     )
-    // },[메세지카드])
     
     return (
         <>
             <button onClick={더미메세지추가}>채팅추가</button>
-            <div className="chat-wrap">
-                <section ref={box}>
-                {
-                    메세지카드?.map((아이템, 인덱스) => 
-                        <div key={인덱스} className={아이템.활성화 === true ? "active" : ""}>{아이템.메세지 + 아이템.활성화}</div>
-                    )
-                }
-                </section>
+            <div className="chat-wrap" ref={box}>
+            {
+                메세지카드?.map((아이템) => 
+                    <div key={아이템.아이디} className={아이템.활성화 === true ? "active" : ""}>{아이템.메세지 + 아이템.활성화}</div>
+                )
+            }
             </div>
             {/* <Module1 />
             <Module2 /> */}
