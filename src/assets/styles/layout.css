@@ -45,16 +45,28 @@ a{color:#fff;}
     overflow:auto;
     border:5px dashed yellow;
 }
-.chat-wrap div{
+.chat-wrap > div{
     border:5px solid #333;
-    height:100px;
     flex:none;
     overflow:hidden;
     opacity: 0;
     max-height: 0;
     transition-duration: 1s;
 }
-.chat-wrap div.active{
+.chat-wrap > div.active{
     opacity: 1;
     max-height: 3000px;
+}
+
+.방향-왼쪽{
+    border:1px solid #333;
+    padding:10px;
+    text-align:left;
+    background:magenta;
+}
+.오른쪽{
+    border:1px solid #333;
+    padding:10px;
+    text-align:right;
+    background:yellow;
 }
