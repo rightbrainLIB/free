@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react"
 import { v4 as uuidv4 } from "uuid";
 import Card from "@components/page/main/Card";
 import Card2 from "@components/page/main/Card2";
+import Card3 from "@components/page/main/Card3";
 type 프롭스타입 = {
     아이디 : string,
     인덱스 : number,
@@ -16,6 +17,7 @@ function Main() {
     const box = useRef<HTMLInputElement>(null);
     const btn = useRef<HTMLButtonElement>(null);
     const [활성화인덱스, 활성화인덱스설정] = useState<number>(0);
+    const [클리어인덱스, 클리어인덱스설정] = useState<number>(-1);
     const [컴포넌트카트, 컴포넌트카드설정] = useState<프롭스타입[]>([
         {
             아이디 : uuidv4(),
@@ -65,6 +67,14 @@ function Main() {
             화면노출 : false,
             다음인덱스 : 5,
         },
+        {
+            아이디 : uuidv4(),
+            인덱스 : 5,
+            카드 : <Card3 메세지={"6. 2번까지남기고다비활성화"} 클리어인덱스설정={클리어인덱스설정} />,
+            활성화 : false,
+            화면노출 : false,
+            다음인덱스 : 5,
+        },
     ]);   
     
     const 더미메세지추가 = () => {
@@ -98,6 +108,31 @@ function Main() {
     useEffect(()=>{
         컴포넌트카트[활성화인덱스]?.콜백?.();
     },[활성화인덱스])
+
+    useEffect(()=>{
+        console.log('clear !!!!!')
+        
+        console.log('클리어인덱스 : ' + 클리어인덱스);
+
+
+        
+        if(클리어인덱스 !== -1){
+            컴포넌트카드설정((이전값)=>{
+                const 업데이트값 = 이전값.map((아이템)=>{
+                    console.log('아이템.인덱스 : ' + 아이템.인덱스);
+    
+                    if(아이템.인덱스 > 클리어인덱스){
+                        return {...아이템, 활성화: false, 화면노출: false};
+                    }else{
+                        return 아이템
+                    }
+                })
+                return [...업데이트값]
+            })
+            활성화인덱스설정(클리어인덱스)
+            클리어인덱스설정(-1);
+        }
+    },[클리어인덱스])
     
     return (
         <>
@@ -105,7 +140,7 @@ function Main() {
             <div className="chat-wrap" ref={box}>
             {
                 컴포넌트카트?.slice(0).reverse().map((아이템) =>
-                    아이템.활성화 && <div key={아이템.아이디} className={아이템.화면노출 === true ? "active" : ""}>{아이템.카드}</div>
+                    아이템.활성화 && <div key={아이템.인덱스} className={아이템.화면노출 === true ? "active" : ""}>{아이템.카드}</div>
                 )
             }
             </div>
