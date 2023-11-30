@@ -1,7 +1,10 @@
+import styles from "@styles/components/talk/UserTalk.module.scss"
 
-const UserTalk = () => {
+const UserTalk = ({ children }) => {
 	return (
-		<div>UserTalk</div>
+		<div className={styles.userTalkWrap}>
+			<div className={styles.userTalk}>{children}</div>
+		</div>
 	)
 }
 
