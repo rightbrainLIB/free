@@ -23,6 +23,7 @@ function Header() {
             <Link to="/hooks/useReducer" onClick={()=>{지금?.활성화메뉴설정(6);메뉴숨길까(false)}}><span style={{fontWeight : (지금?.활성화메뉴 == 6 ? '700' : '400')}}>useReducer</span></Link>
             <Link to="/hooks/reactMemo" onClick={()=>{지금?.활성화메뉴설정(7);메뉴숨길까(false)}}><span style={{fontWeight : (지금?.활성화메뉴 == 7 ? '700' : '400')}}>reactMemo</span></Link>
             <Link to="/hooks/custom" onClick={()=>{지금?.활성화메뉴설정(8);메뉴숨길까(false)}}><span style={{fontWeight : (지금?.활성화메뉴 == 8 ? '700' : '400')}}>customHook</span></Link>
+            <Link to="/recoil" onClick={()=>{지금?.활성화메뉴설정(9);메뉴숨길까(false)}} className="alarm"><span style={{fontWeight : (지금?.활성화메뉴 == -1 ? '700' : '400')}}>Recoil</span></Link>
         </div>
     )
   }

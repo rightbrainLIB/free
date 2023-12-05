@@ -16,7 +16,7 @@ import UseReducer2 from '@components/hooks/useReducer/Index';
 import ReactMemo from '@components/hooks/reactMemo/Index';
 import Custom from '@components/hooks/custom/Index';
 import TypeScript from '@components/typescript/Index';
-
+import Recoil from '@components/recoil/Index';
 
 
 function Router() {
@@ -28,6 +28,7 @@ function Router() {
                 <Routes>
                     <Route path="/" element={<Main  />}></Route>
                     <Route path="/typescript" element={<TypeScript  />}></Route>
+                    <Route path="/Recoil/" element={<Recoil />}></Route>
                     <Route path="/hooks/useState" element={<UseState  />}></Route>
                     <Route path="/hooks/useEffect" element={<UseEffect  />}></Route>
                     <Route path="/hooks/useRef" element={<UseRef  />}></Route>
