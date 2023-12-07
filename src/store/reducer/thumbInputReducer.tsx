@@ -1,5 +1,20 @@
-export const setThumbWrapsCount = (count: number) => ({
-  type: "SET_THUMB_WRAPS_COUNT",
+export const setThumbWrapsCountPart1 = (count: number) => ({
+  type: "SET_THUMB_WRAPS_COUNT_PART1",
+  payload: count
+});
+
+export const setThumbWrapsCountPart2 = (count: number) => ({
+  type: "SET_THUMB_WRAPS_COUNT_PART2",
+  payload: count
+});
+
+export const setThumbWrapsCountPart3 = (count: number) => ({
+  type: "SET_THUMB_WRAPS_COUNT_PART3",
+  payload: count
+});
+
+export const setThumbWrapsCountPart4 = (count: number) => ({
+  type: "SET_THUMB_WRAPS_COUNT_PART4",
   payload: count
 });
 
@@ -26,12 +41,22 @@ interface DialogInputData {
 
 // reducer.js
 const initialState: StateType = {
-  thumbWrapsCount: 2,
+  parts: {
+    part1: 2,
+    part2: 2,
+    part3: 4,
+    part4: 2
+  },
   dialogInputData: {}
 };
 
 interface StateType {
-  thumbWrapsCount: number;
+  parts: {
+    part1: number;
+    part2: number;
+    part3: number;
+    part4: number;
+  };
   dialogInputData: DialogInputData;
 }
 
@@ -40,10 +65,25 @@ const thumbInputReducer = (
   action: { type: any; payload: any }
 ) => {
   switch (action.type) {
-    case "SET_THUMB_WRAPS_COUNT":
+    case "SET_THUMB_WRAPS_COUNT_PART1":
       return {
         ...state,
-        thumbWrapsCount: action.payload
+        parts: { ...state.parts, part1: action.payload }
+      };
+    case "SET_THUMB_WRAPS_COUNT_PART2":
+      return {
+        ...state,
+        parts: { ...state.parts, part2: action.payload }
+      };
+    case "SET_THUMB_WRAPS_COUNT_PART3":
+      return {
+        ...state,
+        parts: { ...state.parts, part3: action.payload }
+      };
+    case "SET_THUMB_WRAPS_COUNT_PART4":
+      return {
+        ...state,
+        parts: { ...state.parts, part4: action.payload }
       };
     case "SET_DIALOG_INPUT":
       const { inputIdentifier, inputValue } = action.payload;

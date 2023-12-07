@@ -12,7 +12,12 @@ interface RootState {
     thumbWraps: number[];
   };
   thumbInput: {
-    thumbWrapsCount: number;
+    parts: {
+      part1: number;
+      part2: number;
+      part3: number;
+      part4: number;
+    };
     dialogInputData: Record<string, any>;
   };
 }

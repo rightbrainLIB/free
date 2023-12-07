@@ -1,4 +1,400 @@
-const ExportHtmlCode = (imagePath: string) => {
+const ExportHtmlCode = (
+  imagePath: string,
+  dialogInputData: any,
+  thumbWrapsCountPart1: number,
+  thumbWrapsCountPart2: number,
+  thumbWrapsCountPart3: number,
+  thumbWrapsCountPart4: number
+) => {
+  //part1 code
+  const renderThumbWraps = () => {
+    let thumbWrapsHtml = "";
+    for (let i = 0; i < thumbWrapsCountPart1; i++) {
+      thumbWrapsHtml += `
+            <tr>
+              <td style="vertical-align:top;">
+                  <img src=${
+                    dialogInputData[`thumbWrap-${i + 1}-img-${i + 1}`]
+                      ? dialogInputData[`thumbWrap-${i + 1}-img-${i + 1}`]
+                      : "https://lh3.googleusercontent.com/pw/ADCreHeNkVAIaJnzVDkptD8HL3UTYvor4_wx-81o5JKEzV7bsWJtd84rG1XxLvDe6xFX1V27YD1hoVNQbhWWWAw1z_YJZ8-WjZKA9d6cjXpRnQO6sQ1aXzi7gYwpmPphDwaYLCMTMoFPUXi_inWEhjGfwfMI=w660-h275-s-no-gm?authuser=1"
+                  }
+                  width="660" height="275" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;"
+                   />
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">
+                  <div style="margin:0;margin-top: 30px;margin-right: 60px;margin-left: 27px;margin-bottom: 6px;font-family: '맑은고딕', 'Apple SD Gothic Neo','Noto Sans KR', sans-serif;font-size: 18px;font-weight: bold;">
+                  ${
+                    dialogInputData[`thumbWrap-${i + 1}-text-${i + 1}`]
+                      ? dialogInputData[`thumbWrap-${i + 1}-text-${i + 1}`]
+                      : "개인화 시대"
+                  }
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">
+                  <div style="margin:0;margin-right: 60px;margin-left: 27px;margin-top: 6px;font-family: 'Georgia','맑은고딕', 'Apple SD Gothic Neo','Noto Sans KR', sans-serif;font-size: 13px;color:#444444;">
+                  ${
+                    dialogInputData[`thumbWrap-${i + 1}-subtext-${i + 1}`]
+                      ? dialogInputData[`thumbWrap-${i + 1}-subtext-${i + 1}`]
+                      : "UX Story"
+                  }
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">
+                  <div style="letter-spacing:-0.5px;font-weight:500;margin-left: 27px;margin-top: 15px;margin-right: 60px;margin-bottom: 20px;color:#000;font-size:15px;line-height: 26px;">
+                  ${
+                    dialogInputData[`thumbWrap-${i + 1}-detailtext-${i + 1}`]
+                      ? dialogInputData[
+                          `thumbWrap-${i + 1}-detailtext-${i + 1}`
+                        ]
+                      : "추천과 더불어 최근의 UX/UI에서 주목받고 있는 게 '개인화'입니다. 개인화는 설정 등의 맞춤화와는 달리 데이터에 기반하여 사용자에게 알맞은 정보나 기능을 전달하는 것입니다. 이번글에서는 최근 고도화된 개인화의 AI활용에 대해서 이야기해 봅니다.추천과 더불어 최근의 UX/UI에서 주목받고 있는 게 ‘개인화’입니다."
+                  }      
+                  </div>
+              </td>
+           </tr>
+           <tr>
+            <!--link button-->
+            <td style="vertical-align:top;">
+                <table width="660" height="34" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                    <tr>
+                        <td style="vertical-align:top;">
+                            <img src="https://lh3.googleusercontent.com/pw/ADCreHcpBcC_XEAGF9W9oB2van5vtAcc7DbqJ2FBm607JW0ogEFSiPubErWeP2KwqBAaW18JYaHCTuX7KF799xWma2YwJPYEFFZkqXY6i1P7RBgErinXzU9NqBxjI8fKpcOimYsjwBI-jNBEBiWH_T0j9SjA=w26-h26-s-no-gm?authuser=1" width="15" height="34" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                        </td>
+                        <td style="vertical-align:top;">
+                            <a href=${
+                              dialogInputData[
+                                `thumbWrap-${i + 1}-link-${i + 1}`
+                              ]
+                                ? dialogInputData[
+                                    `thumbWrap-${i + 1}-link-${i + 1}`
+                                  ]
+                                : "https://blog.rightbrain.co.kr/?p=14969"
+                            }
+                             target="_blank"><img src="https://lh3.googleusercontent.com/pw/ADCreHdXV0BXbMelcz8VPxR7hroFC-hwctmbRi3oS52lgwaMps4dBK24FKmJbTutRTMIMYsG0ghj_vxil1kaoqUSzeeN8yJaa4IpnM1df-OVK-iqY0Te-qRhMKbYhuzjLGkkwzAcpb0JFISLyLc_9LMAfffn=w82-h34-s-no-gm?authuser=1" width="82" height="34" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" /></a>
+                        </td>
+                        <td style="vertical-align:top;">
+                            <img src="https://lh3.googleusercontent.com/pw/ADCreHfTzFbto5XrG8NTekRjlqi_eHXJzdtXIU0i_so5Yyp7vc6Y1hNiEN2QgGb9cEm9OopqU4EWFuVyUxr2_m7jzduG6lq9lY_4V6mW_Lx7b3dPICyyjNsfhRPR_u-awFKHTlDgNNqbkxh8_gvrp1ZPCDhK=w551-h36-s-no-gm?authuser=1" width="551" height="34" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <!--//link button-->
+        </tr>
+        <tr>
+            <td style="vertical-align:top;">
+            <img src="https://lh3.googleusercontent.com/pw/ADCreHcoWEawOSTThj_8XEw3riAWm1j1s4HfDTKlcQm8AlcXa65gkku7J44Pn7hir-QO7BIxO7yXMzrJfA_ydilrj39901FwoqhnYilKFGrz6CmqVe5vMUyRQjnit4mK5DP3ddoA85xL8ycUdmVn9_tWFI2b=w660-h70-s-no-gm?authuser=1" width="660" height="70" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+            </td>
+        </tr>
+           `;
+    }
+    return thumbWrapsHtml;
+  };
+  //part2 code
+  const renderThumbWraps02 = () => {
+    let thumbWrapsHtml = "";
+    for (let i = 0; i < thumbWrapsCountPart2; i++) {
+      thumbWrapsHtml += `
+            <tr>
+              <td style="vertical-align:top;">
+                  <img src=${
+                    dialogInputData[`thumbWrap02-${i + 1}-img-${i + 1}`]
+                      ? dialogInputData[`thumbWrap02-${i + 1}-img-${i + 1}`]
+                      : "https://lh3.googleusercontent.com/pw/ADCreHex2IScRlsVI9Ch3gPWPZJMyF2Wv796SlS0XKAEafxx33EgmJvtbk7XifWUVjxEv1hqFnOokXV4-7-u6jr6A2QTPOM2kVttf4VtIJRH1V_B2YFEB-ve75M7YjE5pYH8floIGl_UKnSpymhdxPq_rDjp=w660-h275-s-no-gm?authuser=1"
+                  }
+                  width="660" height="275" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;"
+                   />
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">
+                  <div style="margin:0;margin-top: 30px;margin-right: 60px;margin-left: 27px;margin-bottom: 6px;font-family: '맑은고딕', 'Apple SD Gothic Neo','Noto Sans KR', sans-serif;font-size: 18px;font-weight: bold;">
+                  ${
+                    dialogInputData[`thumbWrap02-${i + 1}-text-${i + 1}`]
+                      ? dialogInputData[`thumbWrap02-${i + 1}-text-${i + 1}`]
+                      : "슈퍼앱 : 하나의 앱에서 모든 서비스를"
+                  }
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">
+                  <div style="margin:0;margin-right: 60px;margin-left: 27px;margin-top: 6px;font-family: 'Georgia','맑은고딕', 'Apple SD Gothic Neo','Noto Sans KR', sans-serif;font-size: 13px;color:#444444;">${
+                    dialogInputData[`thumbWrap02-${i + 1}-subtext-${i + 1}`]
+                      ? dialogInputData[`thumbWrap02-${i + 1}-subtext-${i + 1}`]
+                      : "App Review"
+                  }</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">
+                  <div style="letter-spacing:-0.5px;font-weight:500;margin-left: 27px;margin-top: 15px;margin-right: 60px;margin-bottom: 20px;color:#000;font-size:15px;line-height: 26px;">
+                  ${
+                    dialogInputData[`thumbWrap02-${i + 1}-detailtext-${i + 1}`]
+                      ? dialogInputData[
+                          `thumbWrap02-${i + 1}-detailtext-${i + 1}`
+                        ]
+                      : "슈퍼앱은 혁신적인 개념으로, 다양한 서비스를 하나의 플랫폼 또는 앱 내에서 통합하여 제공합니다. 이번 글에서는 슈퍼앱의 개념과 특징, 국내외 주요 슈퍼앱들의 사례를 알아보겠습니다."
+                  }      
+                  </div>
+              </td>
+           </tr>
+           <tr>
+            <!--link button-->
+            <td style="vertical-align:top;">
+                <table width="660" height="34" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                    <tr>
+                        <td style="vertical-align:top;">
+                            <img src="https://lh3.googleusercontent.com/pw/ADCreHcpBcC_XEAGF9W9oB2van5vtAcc7DbqJ2FBm607JW0ogEFSiPubErWeP2KwqBAaW18JYaHCTuX7KF799xWma2YwJPYEFFZkqXY6i1P7RBgErinXzU9NqBxjI8fKpcOimYsjwBI-jNBEBiWH_T0j9SjA=w26-h26-s-no-gm?authuser=1" width="15" height="34" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                        </td>
+                        <td style="vertical-align:top;">
+                            <a href=${
+                              dialogInputData[
+                                `thumbWrap02-${i + 1}-link-${i + 1}`
+                              ]
+                                ? dialogInputData[
+                                    `thumbWrap02-${i + 1}-link-${i + 1}`
+                                  ]
+                                : "https://blog.rightbrain.co.kr/?p=14969"
+                            }
+                             target="_blank"><img src="https://lh3.googleusercontent.com/pw/ADCreHdXV0BXbMelcz8VPxR7hroFC-hwctmbRi3oS52lgwaMps4dBK24FKmJbTutRTMIMYsG0ghj_vxil1kaoqUSzeeN8yJaa4IpnM1df-OVK-iqY0Te-qRhMKbYhuzjLGkkwzAcpb0JFISLyLc_9LMAfffn=w82-h34-s-no-gm?authuser=1" width="82" height="34" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" /></a>
+                        </td>
+                        <td style="vertical-align:top;">
+                            <img src="https://lh3.googleusercontent.com/pw/ADCreHfTzFbto5XrG8NTekRjlqi_eHXJzdtXIU0i_so5Yyp7vc6Y1hNiEN2QgGb9cEm9OopqU4EWFuVyUxr2_m7jzduG6lq9lY_4V6mW_Lx7b3dPICyyjNsfhRPR_u-awFKHTlDgNNqbkxh8_gvrp1ZPCDhK=w551-h36-s-no-gm?authuser=1" width="551" height="34" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <!--//link button-->
+        </tr>
+        <tr>
+            <td style="vertical-align:top;">
+            <img src="https://lh3.googleusercontent.com/pw/ADCreHcoWEawOSTThj_8XEw3riAWm1j1s4HfDTKlcQm8AlcXa65gkku7J44Pn7hir-QO7BIxO7yXMzrJfA_ydilrj39901FwoqhnYilKFGrz6CmqVe5vMUyRQjnit4mK5DP3ddoA85xL8ycUdmVn9_tWFI2b=w660-h70-s-no-gm?authuser=1" width="660" height="70" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+            </td>
+        </tr>
+           `;
+    }
+    return thumbWrapsHtml;
+  };
+
+  //part3 code
+  const renderThumbWraps03 = () => {
+    let thumbWrapsHtml = "";
+    thumbWrapsHtml += `
+    <tr>
+        <td style="vertical-align:top;">
+            <img src=${
+              dialogInputData["thumbWrap03-1-img-1"]
+                ? dialogInputData["thumbWrap03-1-img-1"]
+                : "https://lh3.googleusercontent.com/pw/ADCreHf53NO9r7dYxvF8yG7wf24zi3IS3s9VOlE5VJ5eRl3myxzD7YBpiNQXp9wlgscWCKOKX3wpY6hHwKmmTeIZOhdw6OYphzhXt-Qomc1azoHaLTmTelLZ5ihWqjwsOp2xt-m37xrjio_K47n8cRCY9-eX=w660-h275-s-no-gm?authuser=1"
+            }
+             width="660" height="307" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align:top;">
+            <div style="margin:0;margin-right: 60px;margin-left: 27px;margin-top: 30px;margin-bottom: 6px;font-family:  '맑은고딕', 'Apple SD Gothic Neo','Noto Sans KR', sans-serif;font-size: 18px;font-weight: bold;">
+            ${
+              dialogInputData["thumbWrap03-1-text-1"]
+                ? dialogInputData["thumbWrap03-1-text-1"]
+                : "라이트브레인 UX 아카데미 오픈 프로젝트 공개"
+            }
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align:top;">
+            <div style="margin:0;margin-right: 60px;margin-left: 27px;margin-top: 6px;font-family:  'Georgia','맑은고딕', 'Apple SD Gothic Neo','Noto Sans KR', sans-serif;font-size: 13px;color:#444444;">
+            ${
+              dialogInputData["thumbWrap03-1-subtext-1"]
+                ? dialogInputData["thumbWrap03-1-subtext-1"]
+                : "Open Project"
+            }
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align:top;">
+            <div style="letter-spacing:-0.5px;font-weight:500;margin-left: 27px;margin-top: 15px;margin-right: 60px;margin-bottom: 20px;color:#000;font-size:15px;line-height: 26px;">
+            ${
+              dialogInputData["thumbWrap03-1-detailtext-1"]
+                ? dialogInputData["thumbWrap03-1-detailtext-1"]
+                : "라이트브레인 UX 아카데미 교육 과정의 결과물입니다. 지난 UX 아카데미 22~23기 교육 기간 동안 정규과정의 수업뿐만 아니라 별도의 조별 모임을 통해 과제와 프로젝트를 진행하며 만들어 낸 신선한 아이디어를 Rightbrain lab을 통해 공개합니다."
+            }
+            </div>
+        </td>
+    </tr>
+`;
+
+    const listTitle = [
+      "29cm – UX/UI 개선",
+      "토스 모바일앱 – UX/UI 개선",
+      "이마트몰 – UX/UI 개선",
+      "배달의민족 – UX/UI 개선"
+    ];
+    const listLink = [
+      "https://blog.rightbrain.co.kr/?p=15044",
+      "https://blog.rightbrain.co.kr/?p=15021",
+      "https://blog.rightbrain.co.kr/?p=14899",
+      "https://blog.rightbrain.co.kr/?p=14886"
+    ];
+    for (let i = 0; i < thumbWrapsCountPart3; i++) {
+      thumbWrapsHtml += `
+    <tr>
+        <td style="vertical-align:top;">
+            <table width="660" align="left" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                <tr>
+                    <td style="vertical-align:top;">
+                        <img src="https://lh3.googleusercontent.com/pw/ADCreHfizVvAXxXDO6l763GmZ6qhnTkDL5mi_RmDbwxY3RWEf5MK8gshbcb7NfZqhnLP6mfYPDnL6bYK8thtXxhKkwSFvoIp6NUjmG7p_4k7k-btSvlOiIqaRhUaD90hdvS1F3h3V5RezHgcJVkhlgqHNl4t=w660-h39-s-no-gm?authuser=1" width="660" height="39" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top;">
+                        <table width="660" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                            <tr>
+                                <td style="vertical-align:top;" width="552">
+                                    <div style="margin:0;letter-spacing:-2px;margin-left:27px;font-family:  '맑은고딕', 'Apple SD Gothic Neo','Noto Sans KR', sans-serif;font-size: 15px;font-weight: bold;line-height: 35px">
+                                    ${
+                                      dialogInputData[
+                                        `listTextWrap-${i + 1}-listText-${
+                                          i + 1
+                                        }`
+                                      ]
+                                        ? dialogInputData[
+                                            `listTextWrap-${i + 1}-listText-${
+                                              i + 1
+                                            }`
+                                          ]
+                                        : listTitle[i]
+                                    }
+                                    </div>
+                                </td>
+                                <td style="vertical-align:middle;">
+                                    <a href=
+                                    ${
+                                      dialogInputData[
+                                        `listTextWrap-${i + 1}-listLink-${
+                                          i + 1
+                                        }`
+                                      ]
+                                        ? dialogInputData[
+                                            `listTextWrap-${i + 1}-listLink-${
+                                              i + 1
+                                            }`
+                                          ]
+                                        : listLink[i]
+                                    }
+                                     target="_blank"><img src="https://lh3.googleusercontent.com/pw/ADCreHdXV0BXbMelcz8VPxR7hroFC-hwctmbRi3oS52lgwaMps4dBK24FKmJbTutRTMIMYsG0ghj_vxil1kaoqUSzeeN8yJaa4IpnM1df-OVK-iqY0Te-qRhMKbYhuzjLGkkwzAcpb0JFISLyLc_9LMAfffn=w82-h34-s-no-gm?authuser=1" width="82" height="34" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" /></a>
+                                </td>
+                                <td style="vertical-align:top;">
+                                    <img src="https://lh3.googleusercontent.com/pw/ADCreHcpBcC_XEAGF9W9oB2van5vtAcc7DbqJ2FBm607JW0ogEFSiPubErWeP2KwqBAaW18JYaHCTuX7KF799xWma2YwJPYEFFZkqXY6i1P7RBgErinXzU9NqBxjI8fKpcOimYsjwBI-jNBEBiWH_T0j9SjA=w26-h26-s-no-gm?authuser=1" width="26" height="35" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+   
+`;
+    }
+
+    return thumbWrapsHtml;
+  };
+
+  //part4 code
+  const renderThumbWraps04 = () => {
+    let thumbWrapsHtml = "";
+    for (let i = 0; i < thumbWrapsCountPart4; i++) {
+      thumbWrapsHtml += `
+            <tr>
+              <td style="vertical-align:top;">
+                  <img src=${
+                    dialogInputData[`thumbWrap04-${i + 1}-img-${i + 1}`]
+                      ? dialogInputData[`thumbWrap04-${i + 1}-img-${i + 1}`]
+                      : "https://lh3.googleusercontent.com/pw/ADCreHdBWxF0Fl1vO8OYTbfJkUm5KSlukHqSGnuQEKmKtaP9mSv7opT_6zT69nkIxJHBfhzD0k2a8LrEsHmo8uzQWu8H6w1a-km9kXr74_EmiY4s3kO6ApBBmarANvFoUVcuuOvWuvUMfmtmdg5z335Uq3Ry=w660-h275-s-no-gm?authuser=1"
+                  }
+                  width="660" height="275" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;"
+                   />
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">
+                  <div style="margin:0;margin-top: 30px;margin-right: 60px;margin-left: 27px;margin-bottom: 6px;font-family: '맑은고딕', 'Apple SD Gothic Neo','Noto Sans KR', sans-serif;font-size: 18px;font-weight: bold;">
+                  ${
+                    dialogInputData[`thumbWrap04-${i + 1}-text-${i + 1}`]
+                      ? dialogInputData[`thumbWrap04-${i + 1}-text-${i + 1}`]
+                      : "라이트브레인, 2023 ICT AWARD KOREA 금상"
+                  }
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">
+                  <div style="margin:0;margin-right: 60px;margin-left: 27px;margin-top: 6px;font-family: 'Georgia','맑은고딕', 'Apple SD Gothic Neo','Noto Sans KR', sans-serif;font-size: 13px;color:#444444;">
+                  ${
+                    dialogInputData[`thumbWrap04-${i + 1}-subtext-${i + 1}`]
+                      ? dialogInputData[`thumbWrap04-${i + 1}-subtext-${i + 1}`]
+                      : "ICT AWARD KOREA 2023"
+                  }</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">
+                  <div style="letter-spacing:-0.5px;font-weight:500;margin-left: 27px;margin-top: 15px;margin-right: 60px;margin-bottom: 20px;color:#000;font-size:15px;line-height: 26px;">
+                  ${
+                    dialogInputData[`thumbWrap04-${i + 1}-detailtext-${i + 1}`]
+                      ? dialogInputData[
+                          `thumbWrap04-${i + 1}-detailtext-${i + 1}`
+                        ]
+                      : "라이트브레인이 사단법인 한국정보과학진흥협회가 주최한 ICT AWARD KOREA 2023 디지털 인사이트부문에서 KT Genie TV로 금상(한국정보과학진흥협회장상)을 수상하였습니다."
+                  }      
+                  </div>
+              </td>
+           </tr>
+           <tr>
+            <!--link button-->
+            <td style="vertical-align:top;">
+                <table width="660" height="34" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                    <tr>
+                        <td style="vertical-align:top;">
+                            <img src="https://lh3.googleusercontent.com/pw/ADCreHcpBcC_XEAGF9W9oB2van5vtAcc7DbqJ2FBm607JW0ogEFSiPubErWeP2KwqBAaW18JYaHCTuX7KF799xWma2YwJPYEFFZkqXY6i1P7RBgErinXzU9NqBxjI8fKpcOimYsjwBI-jNBEBiWH_T0j9SjA=w26-h26-s-no-gm?authuser=1" width="15" height="34" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                        </td>
+                        <td style="vertical-align:top;">
+                            <a href=${
+                              dialogInputData[
+                                `thumbWrap04-${i + 1}-link-${i + 1}`
+                              ]
+                                ? dialogInputData[
+                                    `thumbWrap04-${i + 1}-link-${i + 1}`
+                                  ]
+                                : "https://blog.rightbrain.co.kr/?p=14969"
+                            }
+                             target="_blank"><img src="https://lh3.googleusercontent.com/pw/ADCreHdXV0BXbMelcz8VPxR7hroFC-hwctmbRi3oS52lgwaMps4dBK24FKmJbTutRTMIMYsG0ghj_vxil1kaoqUSzeeN8yJaa4IpnM1df-OVK-iqY0Te-qRhMKbYhuzjLGkkwzAcpb0JFISLyLc_9LMAfffn=w82-h34-s-no-gm?authuser=1" width="82" height="34" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" /></a>
+                        </td>
+                        <td style="vertical-align:top;">
+                            <img src="https://lh3.googleusercontent.com/pw/ADCreHfTzFbto5XrG8NTekRjlqi_eHXJzdtXIU0i_so5Yyp7vc6Y1hNiEN2QgGb9cEm9OopqU4EWFuVyUxr2_m7jzduG6lq9lY_4V6mW_Lx7b3dPICyyjNsfhRPR_u-awFKHTlDgNNqbkxh8_gvrp1ZPCDhK=w551-h36-s-no-gm?authuser=1" width="551" height="34" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <!--//link button-->
+        </tr>
+        <tr>
+            <td style="vertical-align:top;">
+                <img src="https://lh3.googleusercontent.com/pw/ADCreHcoWEawOSTThj_8XEw3riAWm1j1s4HfDTKlcQm8AlcXa65gkku7J44Pn7hir-QO7BIxO7yXMzrJfA_ydilrj39901FwoqhnYilKFGrz6CmqVe5vMUyRQjnit4mK5DP3ddoA85xL8ycUdmVn9_tWFI2b=w660-h70-s-no-gm?authuser=1" width="660" height="70" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+            </td>
+        </tr>
+           `;
+    }
+    return thumbWrapsHtml;
+  };
+  //html all code
   const getExportHtml = () => {
     return `
       <!DOCTYPE  html  PUBLIC  "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -65,7 +461,11 @@ const ExportHtmlCode = (imagePath: string) => {
                                                   <img src="https://lh3.googleusercontent.com/pw/ADCreHc4wcwcjN7Wsfg80vo0fkXRmbwcrXd1Berg2ovmm4EDF7ggps8hn6CrFFRSzELWlg1VhrWTIty6YxvsPvdzxWaJSbrYw4PwuNA7uVItvExhoPisFvax6mkjF_2Rz7fGzieb3FWhF8Mv7tmO2KiMa30=w600-h222-s-no-gm?authuser=2" width="600" height="222" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
                                               </td>
                                               <td style="vertical-align:top;">
-                                                  <img src="${imagePath}" width="60" height="222" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                                                  <img src="${
+                                                    imagePath
+                                                      ? imagePath
+                                                      : `https://lh3.googleusercontent.com/pw/ADCreHdfPOOgp4QxmWlun607qHn0XKMSHjcLmcbRLmCVgUV5R7XTcx60jK8fzhWXcm3_9Q-NzRsRwyshBOOJ8KWu6Cjh4dca3kMgy8L55PihjhmkQbNc--8NOU1CKQ-As-spkeK09-iKaRCKhdHNTppKeuwC=w59-h222-s-no-gm?authuser=1`
+                                                  }" width="60" height="222" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
                                               </td>
                                           </tr>
                                       </table>
@@ -75,6 +475,42 @@ const ExportHtmlCode = (imagePath: string) => {
                           </table>
                       </td>
                   </tr>
+                  <tr>
+                    <td style="vertical-align:top;">
+                        <!-- ux design insigt title// -->
+                        <img src="https://lh3.googleusercontent.com/pw/ADCreHeP3mndOi5G4cff2B0nvhSAC9Gzjq1sA8R24PkwMMiMXa-ZWKxzq1GcgboWRNLxlNltzUA23kyN8FE0106bS7vZPjBBS07e76a69WKrb0OLqtSZwXytWgqkGpgVnUNWLPV94FzmaxXhQw_fQQ-KWysc=w660-h75-s-no-gm?authuser=1" width="660" height="75" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                    </td>
+                 </tr>
+                  ${renderThumbWraps()}
+                  <tr>
+                    <td style="vertical-align:top;">
+                        <!--special review title// -->
+                        <img src="https://lh3.googleusercontent.com/pw/ADCreHeiaYOn5hRewAHiehlsooUi7e5lNqKq8YlswO-jZhpIZKX_Pg8u4D10PNimm1RIdhfVRLE3YkVJGfO0efu80JkbLErR-myWirFJNnJdCW-Ab4RsDi9s4jvCrYekr3wevoBosROxK5OBivZCkconMgIM=w660-h124-s-no-gm?authuser=1" width="660" height="125" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                    </td>
+                  </tr>
+                  ${renderThumbWraps02()}
+                  <tr>
+                    <td style="vertical-align:top;">
+                        <!--ux academy title// -->
+                        <img src="https://lh3.googleusercontent.com/pw/ADCreHdoM4WTYPiTIeP08_93-VBF42COJ7zpVTjgaAS4Ilg6ZrbxrxJeGiuNydNuTxDrYW_aDrbMJtdHkiaUshTc6XdFnKlibCVpE8BETEjU2jZh3vp-H2HNdg2X3W_PjSb8z21imnr4rv4euW7zHJUU6hkT=w660-h125-s-no-gm?authuser=1" width="660" height="125" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                    </td>
+                  </tr>
+                  ${renderThumbWraps03()}
+                  <tr>
+                    <td style="vertical-align:top;">
+                        <img src="https://lh3.googleusercontent.com/pw/ADCreHfizVvAXxXDO6l763GmZ6qhnTkDL5mi_RmDbwxY3RWEf5MK8gshbcb7NfZqhnLP6mfYPDnL6bYK8thtXxhKkwSFvoIp6NUjmG7p_4k7k-btSvlOiIqaRhUaD90hdvS1F3h3V5RezHgcJVkhlgqHNl4t=w660-h39-s-no-gm?authuser=1" width="660" height="39" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align:top;">
+                        <img src="https://lh3.googleusercontent.com/pw/ADCreHcoWEawOSTThj_8XEw3riAWm1j1s4HfDTKlcQm8AlcXa65gkku7J44Pn7hir-QO7BIxO7yXMzrJfA_ydilrj39901FwoqhnYilKFGrz6CmqVe5vMUyRQjnit4mK5DP3ddoA85xL8ycUdmVn9_tWFI2b=w660-h70-s-no-gm?authuser=1" width="660" height="70" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                    </td>
+                 </tr>
+                  <td style="vertical-align:top;">
+                    <!--rightbrain insight title// -->
+                    <img src="https://lh3.googleusercontent.com/pw/ADCreHfX7CzOd1iI4ZOlc3cgDGUrLPWsifzd4PZyPNvbSJICD9t8EbZmz1JxvkK35M75E6SNdDECTBPanV_qOfiO8aINLqU-jXACYaJWYszvWhFphnsSpw1kL6EpjdUJCniLSuHjCpPjy2IlUVd6S5rvhdlV=w660-h106-s-no-gm?authuser=1" width="660" height="106" hspace="0" vspace="0" border="0" align="absmiddle" alt="" style="display:block; vertical-align:top;" />
+                 </td>
+                 ${renderThumbWraps04()}
                   <tr>
                       <td style="vertical-align:top;">
                           <!-- footer// -->

@@ -120,9 +120,7 @@ const InputDialog: React.FC<InputDialogProps> = ({
       ) : (
         ""
       )}
-
       <DialogContent>
-        {children}
         <TextField
           autoFocus
           margin="dense"

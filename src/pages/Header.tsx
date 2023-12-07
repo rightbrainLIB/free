@@ -27,7 +27,7 @@ const Header = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const newValue = event.target.value;
-    setLocalImagePath(newValue); // 로컬 상태 업데이트
+    setLocalImagePath(newValue);
 
     if (newValue) {
       dispatch(setImagePath(newValue));
@@ -51,10 +51,10 @@ const Header = () => {
   //취소
   const headerClose = () => {
     setOpen(false);
-    if (!localImagePath) {
-      setLocalImagePath("");
-      dispatch(clearImagePath());
-    }
+    // if (!localImagePath) {
+    //   setLocalImagePath("");
+    //   dispatch(clearImagePath());
+    // }
   };
 
   //확인
