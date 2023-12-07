@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../types";
+import { useStoreData } from "@store/storeSelectors";
 import { clearImagePath, setImagePath } from "@store/reducer/HeaderReducer";
 import {
   Dialog,
@@ -13,14 +13,14 @@ import {
   IconButton
 } from "@mui/material";
 import { ModeEdit, Close } from "@mui/icons-material";
-import styles from "@styles/Component/Header.module.scss";
+import styles from "@styles/pages/Header.module.scss";
 
 const Header = () => {
   const [open, setOpen] = React.useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [localImagePath, setLocalImagePath] = useState("");
   const dispatch = useDispatch();
-  const globalImagePath = useSelector((state: RootState) => state.imagePath);
+  const globalImagePath = useStoreData().imagePath;
 
   //input 값 가져오기
   const handleImagePathChange = (
@@ -102,13 +102,17 @@ const Header = () => {
             alt=""
           />
           <div className={styles.dynamic_ho}>
-            <span className={styles.info}>Imaga Area</span>
-            <img
-              src="https://lh3.googleusercontent.com/pw/ADCreHdfPOOgp4QxmWlun607qHn0XKMSHjcLmcbRLmCVgUV5R7XTcx60jK8fzhWXcm3_9Q-NzRsRwyshBOOJ8KWu6Cjh4dca3kMgy8L55PihjhmkQbNc--8NOU1CKQ-As-spkeK09-iKaRCKhdHNTppKeuwC=w59-h222-s-no-gm?authuser=1"
-              width="60"
-              height="222"
-              alt=""
-            />
+            {localImagePath ? (
+              <img src={localImagePath} width="60" height="222" alt="" />
+            ) : (
+              <img
+                src="https://lh3.googleusercontent.com/pw/ADCreHdfPOOgp4QxmWlun607qHn0XKMSHjcLmcbRLmCVgUV5R7XTcx60jK8fzhWXcm3_9Q-NzRsRwyshBOOJ8KWu6Cjh4dca3kMgy8L55PihjhmkQbNc--8NOU1CKQ-As-spkeK09-iKaRCKhdHNTppKeuwC=w59-h222-s-no-gm?authuser=1"
+                width="60"
+                height="222"
+                alt=""
+              />
+            )}
+
             <div className={styles.iconBox} onClick={headerOpen}>
               <ModeEdit />
             </div>

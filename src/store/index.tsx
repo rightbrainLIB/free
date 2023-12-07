@@ -1,36 +1,60 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import headerReducer from "./reducer/HeaderReducer";
+import thumbControlReducer from "./reducer/thumbControlReducer";
+import thumbInputReducer from "./reducer/thumbInputReducer";
 
+// 상태 인터페이스 정의
+interface RootState {
+  header: {
+    imagePath: string;
+  };
+  thumbControl: {
+    thumbWraps: number[];
+  };
+  thumbInput: {
+    thumbWrapsCount: number;
+    dialogInputData: Record<string, any>;
+  };
+}
+
+// 로컬 스토리지에서 상태 로드
 const loadState = () => {
   try {
     const serializedState = localStorage.getItem("state");
-    if (serializedState === null) {
-      return undefined;
-    }
-    return JSON.parse(serializedState);
+    return serializedState ? JSON.parse(serializedState) : undefined;
   } catch (err) {
+    console.error("Failed to load state:", err);
     return undefined;
   }
 };
 
-const saveState = (state: any) => {
+window.localStorage.clear();
+
+// 로컬 스토리지에 상태 저장
+const saveState = (state: RootState) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("state", serializedState);
-  } catch {
-    // 예외 처리
+  } catch (err) {
+    console.error("Failed to save state:", err);
   }
 };
+
+const rootReducer = combineReducers({
+  header: headerReducer,
+  thumbControl: thumbControlReducer,
+  thumbInput: thumbInputReducer
+});
+
 const persistedState = loadState();
 
 const store = configureStore({
-  reducer: headerReducer,
+  reducer: rootReducer,
   preloadedState: persistedState
 });
 
 store.subscribe(() => {
   saveState(store.getState());
 });
-//const store = createStore(headerReducer);
 
 export default store;

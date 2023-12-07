@@ -1,16 +1,16 @@
 import { Button } from "@mui/material";
 import { useStoreData } from "@store/storeSelectors";
-import Header from "@src/components/Header";
-import Content from "@src/components/Content";
-import Footer from "@src/components/Footer";
+import Header from "@pages/Header";
+import Content from "@pages/Content";
+import Footer from "@pages/Footer";
 import getExportHtml from "./ExportHtmlCode";
 import styles from "@styles/EditHtmlCode.module.scss";
 
 const EditHtmlCode = () => {
   const { imagePath } = useStoreData();
+  const { dialogInputData } = useStoreData();
 
   const EmailPreview = () => {
-    console.log(imagePath);
     const previewHtml = getExportHtml(imagePath);
     const previewWindow = window.open("", "_blank");
     if (previewWindow) {
