@@ -16,12 +16,15 @@ const talk = createSlice({
     setChatBox: (state, { payload }) => {
       state.chatBox = state.chatBox.concat(payload);
     },
+    setResetChatBox: (state) => {
+      state.chatBox = [];
+    },
     setPriceValue: (state, { payload }) => {
       state.priceValue = payload;
     },
   },
 });
 
-export const { setCurrentTalk, setChatBox, setPriceValue }  = talk.actions;
+export const { setCurrentTalk, setChatBox, setPriceValue, setResetChatBox }  = talk.actions;
 
 export default talk.reducer;

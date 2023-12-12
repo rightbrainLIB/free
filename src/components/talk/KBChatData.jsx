@@ -13,7 +13,6 @@ const KBChatData0 = () => {
   )
 }
 
-// redux : 환전통화선택
 const KBChatData1 = () => {
   return (
     <KBTalk>
@@ -99,30 +98,95 @@ const KBChatData4 = () => {
 }
 
 const KBChatData5 = () => {
+  const dispatch = useDispatch();
+  const chatBox = useSelector((state) => state.talk.chatBox);
+
+  // 지금 환전
+  const nowExc = () => {
+    dispatch(setChatBox(
+			<MotionListWrap key={chatBox.length}>
+				<MotionList>
+					<UserTalk>지금 환전할게요</UserTalk>
+				</MotionList>
+				<MotionList>
+					<KBChatData6 />
+				</MotionList>
+			</MotionListWrap>
+		))
+  }
   return (
     <KBTalk>
       <p>환전하시겠어요?</p>
-      <TalkSelectButton>지금 환전할게요</TalkSelectButton>
+      <TalkSelectButton onClick={nowExc}>지금 환전할게요</TalkSelectButton>
       <TalkSelectButton>환전금액 수정</TalkSelectButton>
     </KBTalk>
   )
 }
 
 const KBChatData6 = () => {
+  const dispatch = useDispatch();
+  const chatBox = useSelector((state) => state.talk.chatBox);
+
+  // 여행자 보험신청
+  const insurance = () => {
+    dispatch(setChatBox(
+			<MotionListWrap key={chatBox.length}>
+				<MotionList>
+					<UserTalk>여행자 보험 신청할게요</UserTalk>
+				</MotionList>
+				<MotionList>
+					<KBChatData7 />
+				</MotionList>
+			</MotionListWrap>
+		))
+  }
+
   return (
-    <KBTalk>
-      <p>여행자 보험신청?</p>
-      <TalkSelectButton>여행자 보험신청</TalkSelectButton>
-      <TalkSelectButton>환전만</TalkSelectButton>
-    </KBTalk>
+    <>
+      <KBTalk moreView={"여행자보험 보장항목 보기"}>
+        <p>여행자 보험신청?</p>
+        <TalkSelectButton onClick={insurance}>여행자 보험신청</TalkSelectButton>
+        <TalkSelectButton>환전만</TalkSelectButton>
+      </KBTalk>
+    </>
   )
 }
 
 const KBChatData7 = () => {
+  const dispatch = useDispatch();
+  const chatBox = useSelector((state) => state.talk.chatBox);
+
+  // 여행자 보험신청
+  const seoulStation = () => {
+    const chatArray = [
+    <MotionListWrap key={chatBox.length}>
+      <MotionList>
+        <UserTalk>서울역</UserTalk>
+      </MotionList>
+      <MotionList>
+        <KBChatData8 />
+      </MotionList>
+    </MotionListWrap>, 
+    <MotionListWrap key={chatBox.length}>
+      <MotionList>
+        <UserTalk>010-123-456</UserTalk>
+      </MotionList>
+      <MotionList sheetOpen={"환전사유선택"}>
+        <KBChatData9 />
+      </MotionList>
+    </MotionListWrap>]
+
+    chatArray.forEach((payload, i) => {
+      setTimeout(function(){
+        dispatch(setChatBox(payload))
+      }, i * 1400)
+    })
+  }
+
   return (
     <KBTalk>
       <p>어느지점에서 수령?</p>
-      <TalkSelectButton>서울역</TalkSelectButton>
+      <TalkSelectButton onClick={seoulStation}>서울역</TalkSelectButton>
       <TalkSelectButton>홍대입구역</TalkSelectButton>
       <TalkSelectButton>일반지점 검색</TalkSelectButton>
     </KBTalk>

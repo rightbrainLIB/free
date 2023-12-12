@@ -37,18 +37,21 @@ const PriceKeypadSheet = () => {
 
 	// 확인 버튼 클릭
 	const confirmClick = () => {
+		var price = priceNum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 		setOpen(false)
 		dispatch(setPriceValue(priceNum))
-		dispatch(setChatBox(
-			<MotionListWrap key={chatBox.length}>
-				<MotionList>
-					<UserTalk>{priceNum}달러</UserTalk>
-				</MotionList>
-				<MotionList>
-					<KBChatData5 />
-				</MotionList>
-			</MotionListWrap>
-		))
+		if(currentTalk === "환전신청금액입력") {
+			dispatch(setChatBox(
+				<MotionListWrap key={chatBox.length}>
+					<MotionList>
+						<UserTalk>{price}달러</UserTalk>
+					</MotionList>
+					<MotionList>
+						<KBChatData5 />
+					</MotionList>
+				</MotionListWrap>
+			))
+		}
     keyboardRef.current.clearInput();
 		setPriceNum(null)
 	}
@@ -61,7 +64,6 @@ const PriceKeypadSheet = () => {
           <Button
             className={cx(
               styles.change,
-              // priceNum >= 6 ? styles.active : ""
             )}
             disabled={priceNum < 1000}
             block

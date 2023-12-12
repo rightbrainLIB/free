@@ -112,6 +112,9 @@ table {
 
 /* global style */
 body {
+  height: 100vh;
+	background-color: #FDF7E7;
+
   -webkit-text-size-adjust:none;
   font-size: 16px;
   font-family: 'KBL', sans-serif;
