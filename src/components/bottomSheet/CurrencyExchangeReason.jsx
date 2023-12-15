@@ -2,22 +2,20 @@ import { useState, useEffect } from "react";
 import { Button, Drawer } from "antd";
 import styles from "@styles/components/bottomSheet/CurrencySelectSheet.module.scss"
 import { useSelector, useDispatch } from "react-redux";
-import { setChatBox } from "@store/talk.js";
-import {MotionListWrap, MotionList} from "@components/motion/motionList";
-import { KBChatData10, KBChatData11 } from "@components/talk/KBChatData";
+import { setChatBox, setCurrentTalk } from "@store/talk.js";
 import { Radio } from 'antd';
-import UserTalk from "@components/talk/UserTalk";
+import { SettingChatData } from "@store/SettingChatData";
 
 const CurrencyExchangeReason = () => {
 	const dispatch = useDispatch();
 	const [open, setOpen] = useState(false);
 	const [reason, setReason] = useState("사유1");
   const currentTalk = useSelector((state) => state.talk.currentTalk);
-  const chatBox = useSelector((state) => state.talk.chatBox);
-	
+  const chatCount = useSelector((state) => state.talk.chatCount);
+
 	// 메세지 노출 후 시트 오픈
 	useEffect(()=> {
-		if(currentTalk === "환전사유선택") {
+		if(currentTalk === "CurrencyExchangeReason") {
 			setOpen(true)
 		}
 	}, [currentTalk])
@@ -35,32 +33,12 @@ const CurrencyExchangeReason = () => {
 	
 	// 확인버튼 클릭시 닫은 후 다음 메세지 노출
 	const confirmSheet = () => {
-		const chatArray = [
-				<MotionListWrap key={chatBox.length}>
-					<MotionList>
-						<UserTalk>사유1</UserTalk>
-						{/* <UserTalk>{currency}</UserTalk> */}
-					</MotionList>
-					<MotionList>
-						<KBChatData10 />
-					</MotionList>
-				</MotionListWrap>,
-				<MotionListWrap key={chatBox.length}>
-					<MotionList>
-						<UserTalk>1002-806-625337</UserTalk>
-					</MotionList>
-					<MotionList>
-						<KBChatData11 />
-					</MotionList>
-				</MotionListWrap>
-			]
-
-    chatArray.forEach((payload, i) => {
-      setTimeout(function(){
-        dispatch(setChatBox(payload))
-      }, i * 1400)
-    })
+		dispatch(setChatBox(SettingChatData("KBChat8-1", chatCount["KBChat8"])))
+		setTimeout(function(){
+			dispatch(setChatBox(SettingChatData("KBChat8-2", chatCount["KBChat8"])))
+		}, 1400)
 		setOpen(false)
+		dispatch(setCurrentTalk(""))
 	}
 
 	return (

@@ -1,7 +1,7 @@
 import ChatBotContainer  from "@components/ChatBotContainer.jsx"
 import KBHeader from "@components/KBHeader";
-import {KBChatData0, KBChatData1} from "@components/talk/KBChatData"
-import {MotionListWrap, MotionList} from "@components/motion/motionList";
+import KBTalk from "@components/talk/KBTalk";
+import {MotionListWrap} from "@components/motion/motionList";
 import CurrencySelectSheet from "@components/bottomSheet/CurrencySelectSheet";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -13,7 +13,7 @@ import { setCurrentTalk } from "@store/talk";
 const ExchangeChatBot = () => {
 	const dispatch = useDispatch();
   const chatBox = useSelector((state) => state.talk.chatBox);
-	
+
 	useEffect(()=> {
 		dispatch(setCurrentTalk(""))
 	}, [])
@@ -23,14 +23,20 @@ const ExchangeChatBot = () => {
 			<ChatBotContainer>
 				<KBHeader />
 				<MotionListWrap>
-					<MotionList>
-						<KBChatData0 />
-					</MotionList>
-					<MotionList sheetOpen={"환전통화선택"}>
-						<KBChatData1 />
-					</MotionList>
+					<KBTalk>
+						<p>안녕하세요. 김국민님!</p>
+					</KBTalk>
+					<KBTalk sheetOpen={"CurrencySelectSheet"}>
+						<p>환전하실 통화 선택해주세요.</p>
+					</KBTalk>
 				</MotionListWrap>
-				{chatBox}
+				{
+					chatBox.map(item => {
+						return (
+							item.element
+						)
+					})
+				}
 			</ChatBotContainer>
 			<CurrencySelectSheet />
 			<PriceKeypadSheet />

@@ -4,12 +4,10 @@ import cx from "classnames";
 import { Input, Button, Drawer } from "antd";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setPriceValue, setChatBox } from "@store/talk"
-import { MotionListWrap, MotionList } from "@components/motion/motionList";
-import { KBChatData5 } from "@components/talk/KBChatData";
-import UserTalk from "@components/talk/UserTalk";
+import { setPriceValue, setChatBox, setCurrentTalk } from "@store/talk"
 import iconDelete from "@imgs/ico_delete.svg";
 import styles from "@styles/components/bottomSheet/PriceKeypadSheet.module.scss"
+import { SettingChatData } from "@store/SettingChatData";
 
 const PriceKeypadSheet = () => {
 	const dispatch = useDispatch();
@@ -18,14 +16,10 @@ const PriceKeypadSheet = () => {
 	const keyboardRef = useRef(null);
   const accountNumRef = useRef(null);
   const currentTalk = useSelector((state) => state.talk.currentTalk);
-  const chatBox = useSelector((state) => state.talk.chatBox);
-	
+	const chatCount = useSelector((state) => state.talk.chatCount);
 	// 메세지 노출 후 시트 오픈
 	useEffect(()=> {
-		if(currentTalk === "원하는환률입력") {
-			setOpen(true)
-		}
-		if(currentTalk === "환전신청금액입력") {
+		if(currentTalk === "PriceKeypadSheet2" || currentTalk === "PriceKeypadSheet") {
 			setOpen(true)
 		}
 	}, [currentTalk])
@@ -40,20 +34,12 @@ const PriceKeypadSheet = () => {
 		var price = priceNum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 		setOpen(false)
 		dispatch(setPriceValue(priceNum))
-		if(currentTalk === "환전신청금액입력") {
-			dispatch(setChatBox(
-				<MotionListWrap key={chatBox.length}>
-					<MotionList>
-						<UserTalk>{price}달러</UserTalk>
-					</MotionList>
-					<MotionList>
-						<KBChatData5 />
-					</MotionList>
-				</MotionListWrap>
-			))
+		if(currentTalk === "PriceKeypadSheet") {
+			dispatch(setChatBox(SettingChatData("KBChat4", chatCount["KBChat4"], price)))
 		}
     keyboardRef.current.clearInput();
 		setPriceNum(null)
+		dispatch(setCurrentTalk(""))
 	}
 
 	return (

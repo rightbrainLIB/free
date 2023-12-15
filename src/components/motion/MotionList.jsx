@@ -34,6 +34,7 @@ const MotionList = ({sheetOpen, children}) => {
   
   useMotionValueEvent(y, "animationComplete", () => {
     if(sheetOpen) {
+      console.log(sheetOpen)
       dispatch(setCurrentTalk(sheetOpen));
     }
   })
