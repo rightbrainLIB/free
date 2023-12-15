@@ -2,7 +2,7 @@ import TalkSelectButton from "../buttons/TalkSelectButton"
 import KBTalk from "@components/talk/KBTalk";
 import { useSelector, useDispatch } from "react-redux";
 import { setChatBox, setSpliceChatBox } from "@store/talk.js";
-import { SettingChatData } from "@store/SettingChatData";
+import { SettingChatData } from "@components/talk/SettingChatData";
 
 const SecondExcahgeQ = () => {
 	const dispatch = useDispatch();

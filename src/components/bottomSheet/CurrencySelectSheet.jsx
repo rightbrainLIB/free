@@ -4,7 +4,7 @@ import styles from "@styles/components/bottomSheet/CurrencySelectSheet.module.sc
 import { useSelector, useDispatch } from "react-redux";
 import { setChatBox } from "@store/talk.js";
 import { Radio } from 'antd';
-import {SettingChatData} from "@store/SettingChatData";
+import {SettingChatData} from "@components/talk/SettingChatData";
 
 const CurrencySelectSheet = () => {
 	const dispatch = useDispatch();

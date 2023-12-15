@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPriceValue, setChatBox, setCurrentTalk } from "@store/talk"
 import iconDelete from "@imgs/ico_delete.svg";
 import styles from "@styles/components/bottomSheet/PriceKeypadSheet.module.scss"
-import { SettingChatData } from "@store/SettingChatData";
+import { SettingChatData } from "@components/talk/SettingChatData";
 
 const PriceKeypadSheet = () => {
 	const dispatch = useDispatch();
