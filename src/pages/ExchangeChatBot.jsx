@@ -8,14 +8,14 @@ import { useEffect } from "react";
 import PriceKeypadSheet from "@components/bottomSheet/PriceKeypadSheet";
 import CurrencyExchangeReason from "@components/bottomSheet/CurrencyExchangeReason";
 import { useDispatch } from "react-redux";
-import { setCurrentTalk } from "@store/talk";
+import { setCurrentSheet } from "@store/talk";
 
 const ExchangeChatBot = () => {
 	const dispatch = useDispatch();
   const chatBox = useSelector((state) => state.talk.chatBox);
 
 	useEffect(()=> {
-		dispatch(setCurrentTalk(""))
+		dispatch(setCurrentSheet(""))
 	}, [])
 
 	return (

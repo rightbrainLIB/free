@@ -4,7 +4,7 @@ import cx from "classnames";
 import { Input, Button, Drawer } from "antd";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setPriceValue, setChatBox, setCurrentTalk } from "@store/talk"
+import { setPriceValue, setChatBox, setCurrentSheet } from "@store/talk"
 import iconDelete from "@imgs/ico_delete.svg";
 import styles from "@styles/components/bottomSheet/PriceKeypadSheet.module.scss"
 import { SettingChatData } from "@components/talk/SettingChatData";
@@ -15,14 +15,14 @@ const PriceKeypadSheet = () => {
 	const [open, setOpen] = useState(false);
 	const keyboardRef = useRef(null);
   const accountNumRef = useRef(null);
-  const currentTalk = useSelector((state) => state.talk.currentTalk);
+  const currentSheet = useSelector((state) => state.talk.currentSheet);
 	const chatCount = useSelector((state) => state.talk.chatCount);
 	// 메세지 노출 후 시트 오픈
 	useEffect(()=> {
-		if(currentTalk === "PriceKeypadSheet2" || currentTalk === "PriceKeypadSheet") {
+		if(currentSheet === "PriceKeypadSheet2" || currentSheet === "PriceKeypadSheet") {
 			setOpen(true)
 		}
-	}, [currentTalk])
+	}, [currentSheet])
 
 	// 숫자 키패드 입력시 값 변환
 	const onChangeKeypad = useCallback((input) => {
@@ -34,12 +34,12 @@ const PriceKeypadSheet = () => {
 		var price = priceNum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 		setOpen(false)
 		dispatch(setPriceValue(priceNum))
-		if(currentTalk === "PriceKeypadSheet") {
-			dispatch(setChatBox(SettingChatData("KBChat4", chatCount["KBChat4"], price)))
+		if(currentSheet === "PriceKeypadSheet") {
+			dispatch(setChatBox(SettingChatData("KBChat4", chatCount, price)))
 		}
     keyboardRef.current.clearInput();
 		setPriceNum(null)
-		dispatch(setCurrentTalk(""))
+		dispatch(setCurrentSheet(""))
 	}
 
 	return (

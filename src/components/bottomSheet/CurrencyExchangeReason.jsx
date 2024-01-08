@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Drawer } from "antd";
 import styles from "@styles/components/bottomSheet/CurrencySelectSheet.module.scss"
 import { useSelector, useDispatch } from "react-redux";
-import { setChatBox, setCurrentTalk } from "@store/talk.js";
+import { setChatBox, setCurrentSheet } from "@store/talk.js";
 import { Radio } from 'antd';
 import { SettingChatData } from "@components/talk/SettingChatData";
 
@@ -10,15 +10,15 @@ const CurrencyExchangeReason = () => {
 	const dispatch = useDispatch();
 	const [open, setOpen] = useState(false);
 	const [reason, setReason] = useState("사유1");
-  const currentTalk = useSelector((state) => state.talk.currentTalk);
+  const currentSheet = useSelector((state) => state.talk.currentSheet);
   const chatCount = useSelector((state) => state.talk.chatCount);
 
 	// 메세지 노출 후 시트 오픈
 	useEffect(()=> {
-		if(currentTalk === "CurrencyExchangeReason") {
+		if(currentSheet === "CurrencyExchangeReason") {
 			setOpen(true)
 		}
-	}, [currentTalk])
+	}, [currentSheet])
 
 	// 사유 저장
   const onReasonChange = (e) => {
@@ -33,12 +33,12 @@ const CurrencyExchangeReason = () => {
 	
 	// 확인버튼 클릭시 닫은 후 다음 메세지 노출
 	const confirmSheet = () => {
-		dispatch(setChatBox(SettingChatData("KBChat8-1", chatCount["KBChat8"])))
+		dispatch(setChatBox(SettingChatData("KBChat8-1", chatCount)))
 		setTimeout(function(){
-			dispatch(setChatBox(SettingChatData("KBChat8-2", chatCount["KBChat8"])))
+			dispatch(setChatBox(SettingChatData("KBChat8-2", chatCount)))
 		}, 1400)
 		setOpen(false)
-		dispatch(setCurrentTalk(""))
+		dispatch(setCurrentSheet(""))
 	}
 
 	return (

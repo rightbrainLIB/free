@@ -1,35 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  currentTalk: '',
-  chatCount: {
-    "KBChat1" : 0,
-    "KBChat2" : 0,
-    "KBChat3" : 0,
-    "KBChat4" : 0,
-    "KBChat5" : 0,
-    "KBChat6" : 0,
-    "KBChat7" : 0,
-    "KBChat8" : 0,
-    "KBChat9" : 0,
-  },
-  chatBox: [],
-  priceValue: null,
+  currentSheet: '', // 오픈되어야 할 바텀시트
+  chatCount: 0,
+  chatBox: [], // 채팅내역
+  priceValue: null, // 가격
 }
 
 const talk = createSlice({
   name: "talk",
   initialState,
   reducers: {
-    setCurrentTalk: (state, { payload }) => {
-      state.currentTalk = payload;
+    setCurrentSheet: (state, { payload }) => {
+      state.currentSheet = payload;
     },
     setChatBox: (state, { payload }) => {
-      state.chatCount[payload.name] = state.chatCount[payload.name] + 1
+      state.chatCount = state.chatCount + 1
       state.chatBox = state.chatBox.concat(payload);
     },
-    setSpliceChatBox: (state, { payload }) => {
-      if(payload !== -1 && payload !== state.chatBox.length - 1 ) {
+    setSpliceChatBox: (state, { payload }) => { // 이전 채팅버튼 클릭시 이후 채팅목록 제거
+      console.log(payload)
+      console.log(state.chatBox.length - 1)
+      if(payload !== -1 && payload !== state.chatBox.length - 1 ) {// 일치하지않는 값, 마지막 채팅이면 X
         state.chatBox.splice(payload + 1)      
       }
     },
@@ -42,6 +34,6 @@ const talk = createSlice({
   },
 });
 
-export const { setCurrentTalk, setChatBox, setSpliceChatBox, setPriceValue, setResetChatBox }  = talk.actions;
+export const { setCurrentSheet, setChatBox, setSpliceChatBox, setPriceValue, setResetChatBox }  = talk.actions;
 
 export default talk.reducer;

@@ -9,18 +9,16 @@ const ReceiveAfterExchange = () => {
   const chatCount = useSelector((state) => state.talk.chatCount);
   const chatBox = useSelector((state) => state.talk.chatBox);
 
-  const bankExc = (e) => {
-    const selectChat = e.target.getAttribute("aria-label")
-    const selectChatNum = e.target.getAttribute("value")
-    const thisChatData = chatBox.filter((item) => item.name === selectChat && item.num === Number(selectChatNum) -1)
+  const bankExc = () => {
+    const thisChatData = chatBox.filter((item) => item.name === "KBChat2")
     dispatch(setSpliceChatBox(chatBox.indexOf(thisChatData[0])))
-    dispatch(setChatBox(SettingChatData("KBChat3", chatCount["KBChat3"])));
+    dispatch(setChatBox(SettingChatData("KBChat3", chatCount)));
   }
   
   return (
     <KBTalk>
       <p>환전 후 수령방법</p>
-      <TalkSelectButton onClick={bankExc} data={"KBChat2"} value={chatCount["KBChat2"]}>은행</TalkSelectButton>
+      <TalkSelectButton onClick={bankExc}>은행</TalkSelectButton>
       <TalkSelectButton>외환ATM</TalkSelectButton>
       <TalkSelectButton>우편</TalkSelectButton>
       <TalkSelectButton>친구</TalkSelectButton>

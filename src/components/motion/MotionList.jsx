@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useMotionValueEvent } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { setCurrentTalk } from "@store/talk.js";
+import { setCurrentSheet } from "@store/talk.js";
 
 const MotionListWrap = ({ children }) => {
 	const list = {
@@ -35,7 +35,7 @@ const MotionList = ({sheetOpen, children}) => {
   useMotionValueEvent(y, "animationComplete", () => {
     if(sheetOpen) {
       console.log(sheetOpen)
-      dispatch(setCurrentTalk(sheetOpen));
+      dispatch(setCurrentSheet(sheetOpen));
     }
   })
 

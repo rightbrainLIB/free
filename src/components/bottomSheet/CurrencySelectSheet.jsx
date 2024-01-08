@@ -10,14 +10,14 @@ const CurrencySelectSheet = () => {
 	const dispatch = useDispatch();
 	const [open, setOpen] = useState(false);
 	const [currency, setCurrency] = useState("USD (미국 달러)");
-  const currentTalk = useSelector((state) => state.talk.currentTalk);
+  const currentSheet = useSelector((state) => state.talk.currentSheet);
   const chatCount = useSelector((state) => state.talk.chatCount);
 	// 메세지 노출 후 시트 오픈
 	useEffect(()=> {
-		if(currentTalk === "CurrencySelectSheet") {
+		if(currentSheet === "CurrencySelectSheet") {
 			setOpen(true)
 		}
-	}, [currentTalk])
+	}, [currentSheet])
 
 	// 통화값 저장
   const onCurrencyChange = (e) => {
@@ -32,7 +32,7 @@ const CurrencySelectSheet = () => {
 	
 	// 확인버튼 클릭시 닫은 후 다음 메세지 노출
 	const confirmSheet = () => {
-		dispatch(setChatBox(SettingChatData("KBChat1", chatCount["KBChat1"])));
+		dispatch(setChatBox(SettingChatData("KBChat1", chatCount)));
 		setOpen(false)
 	}
 
